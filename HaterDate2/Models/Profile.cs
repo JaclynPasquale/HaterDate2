@@ -34,6 +34,7 @@ namespace HaterDate2.Models
         public Int16 Zipcode { get; set; }
         public byte[] Image { get; set; }
         public ICollection<string> FavoriteIds { get; set; }
+        public ICollection<int> QuestionsAnsweredIds { get; set; }
 
     }
 
