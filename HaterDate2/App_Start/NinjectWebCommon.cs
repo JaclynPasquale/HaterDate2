@@ -10,6 +10,7 @@ namespace HaterDate2.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using HaterDate2.Data;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +62,8 @@ namespace HaterDate2.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<HaterDateContext>().To<HaterDateContext>().InRequestScope();
+            kernel.Bind<IHaterDateRepository>().To<HaterDateRepository>().InRequestScope();
         }        
     }
 }

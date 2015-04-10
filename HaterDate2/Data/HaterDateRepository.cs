@@ -7,9 +7,11 @@ namespace HaterDate2.Data
 {
     public class HaterDateRepository : IHaterDateRepository
     {
-        public HaterDateRepository()
-        {
+        HaterDateContext _ctx;
 
+        public HaterDateRepository(HaterDateContext ctx)
+        {
+            _ctx = ctx;
         }
 
         public IQueryable<Models.Hate> GetAllQuestions()
