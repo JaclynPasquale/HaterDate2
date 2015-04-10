@@ -7,7 +7,7 @@ namespace HaterDate2.Models
 {
     public class Hate
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
     }
 }
