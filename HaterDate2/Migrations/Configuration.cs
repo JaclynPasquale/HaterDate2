@@ -1,5 +1,6 @@
 namespace HaterDate2.Migrations
 {
+    using HaterDate2.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,24 +10,37 @@ namespace HaterDate2.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+
+            //Switch this after development
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "HaterDate2.Data.HaterDateContext";
         }
 
         protected override void Seed(HaterDate2.Data.HaterDateContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Hates.AddOrUpdate(i => i.Id,
+                new Hate
+                {
+                    Description = "Dave Matthews Band"
+                },
+                new Hate
+                {
+                    Description = "Patchouli"
+                },
+                new Hate 
+                {
+                    Description = "Dudes in skinny jeans"
+                },
+                new Hate
+                {
+                    Description = "Camping"
+                },
+                new Hate
+                {
+                    Description = "Cats"
+                }
+            );
         }
     }
 }
