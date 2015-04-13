@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HaterDate2.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,17 @@ namespace HaterDate2.Controllers
 {
     public class HomeController : Controller
     {
+        private IHaterDateRepository _repo;
+
+        public HomeController(IHaterDateRepository repo)
+        {
+            _repo = repo;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var questions = _repo.GetAllQuestions();
+            return View(questions);
         }
 
         public ActionResult About()
