@@ -12,5 +12,7 @@ namespace HaterDate2.Data
         IQueryable<Hate> GetAllQuestions();
         Profile GetProfileById(string userId);
         ICollection<Hate> GetUserHates(string userId);
+        bool AddHate(Hate newHate);
+        bool Save();
     }
 }
