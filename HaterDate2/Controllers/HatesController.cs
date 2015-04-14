@@ -21,5 +21,14 @@ namespace HaterDate2.Controllers
         {
             return _repo.GetAllQuestions();
         }
+
+        public HttpResponseMessage Post([FromBody]Hate newHate)
+        {
+            if (_repo.AddHate(newHate) && _repo.Save())
+            {
+                return Request.CreateResponse(HttpStatusCode.Created, newHate);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
     }
 }
