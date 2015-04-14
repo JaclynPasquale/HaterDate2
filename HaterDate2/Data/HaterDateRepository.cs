@@ -1,7 +1,11 @@
-﻿using System;
+﻿using HaterDate2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.WebPages.Html;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace HaterDate2.Data
 {
@@ -14,19 +18,47 @@ namespace HaterDate2.Data
             _ctx = ctx;
         }
 
-        public IQueryable<Models.Hate> GetAllQuestions()
+        public IQueryable<Hate> GetAllQuestions()
         {
-            throw new NotImplementedException();
+            return _ctx.Hates;
         }
 
-        public Models.Profile GetProfileById(string userId)
+        public Profile GetProfileById(string userId)
         {
-            throw new NotImplementedException();
+           return  _ctx.Profiles.Where(x => x.ApplicationUserId == userId).Single();
         }
 
-        public IQueryable<Models.Hate> GetUserHates(string userId)
+        public ICollection<Hate> GetUserHates(string userId)
         {
-            throw new NotImplementedException();
+            return GetProfileById(userId).Hates;
+        }
+
+        public bool AddHate(Hate newHate)
+        {
+            //check for modelstate validity 
+            try
+            {
+                _ctx.Hates.Add(newHate);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public bool Save()
+        {
+            try
+            {
+                return _ctx.SaveChanges() > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
         }
     }
 }
