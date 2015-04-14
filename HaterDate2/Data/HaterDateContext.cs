@@ -11,9 +11,7 @@ namespace HaterDate2.Data
     {
         public HaterDateContext() : base("DefaultConnection")
         {
-
         }
-
         public DbSet<Hate> Hates { get; set; }
         public DbSet<Profile> Profiles { get; set; }
     }

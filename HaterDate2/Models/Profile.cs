@@ -8,6 +8,7 @@ namespace HaterDate2.Models
 {
     public class Profile
     {
+        public int Id { get; set; }
         [Required]
         public string ApplicationUserId { get; set; }
         [Required]
