@@ -11,6 +11,8 @@ namespace HaterDate2.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using HaterDate2.Data;
+    using System.Web.Http;
+    using WebApiContrib.IoC.Ninject;
 
     public static class NinjectWebCommon 
     {
@@ -64,6 +66,8 @@ namespace HaterDate2.App_Start
         {
             kernel.Bind<HaterDateContext>().To<HaterDateContext>().InRequestScope();
             kernel.Bind<IHaterDateRepository>().To<HaterDateRepository>().InRequestScope();
+
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel); //Handles dependency injection on the web api controller  
         }        
     }
 }
