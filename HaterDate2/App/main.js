@@ -1,1 +1,1 @@
-﻿
+﻿var app = angular.module('HaterDateApp', ['ngRoute', 'LocalStorageModule'])
